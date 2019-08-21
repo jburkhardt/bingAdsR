@@ -1,5 +1,5 @@
 <s:Envelope xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
-  <s:Header xmlns="https://bingads.microsoft.com/Reporting/v12">
+  <s:Header xmlns="https://bingads.microsoft.com/Reporting/v13">
     <Action mustUnderstand="1">%s</Action>
     <ApplicationToken i:nil="false">%s</ApplicationToken>
     <AuthenticationToken i:nil="false">%s</AuthenticationToken>

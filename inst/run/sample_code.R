@@ -1,9 +1,9 @@
 rm(list=ls())
 # library(devtools)
-# install_github("deepeshgoeliitk/bingAdsR")
+# install_github("jburkhardt/bingAdsR")
 library(bingAdsR)
 
-##Variables##
+# Credentials ---------------------------------------------------
 credentials <- list(
   ###For authorization and access token###
   client_id = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
@@ -16,10 +16,10 @@ credentials <- list(
   account_id = "XXXXXXX"
 )
 
-####AUTHENTICATION#####
+# Authentication -----------------------------------------------
 credentials <- baAuthentication(credentials)
 
-#####Generate the data
+# Load data ----------------------------------------------------
 startDate <- "2018-05-17"
 endDate <- "2018-05-17"
 
@@ -33,10 +33,4 @@ df <- getDataFromURL(downloadUrl)
 
 report <- "AccountPerformanceReport"
 columns <- c("AccountName", "DeviceType", "TimePeriod", "Impressions", "Clicks", "Spend", "Conversions")
-
-
-
-
-# write(downloadUrl, "downloadUrl.csv")
-# getwd()
 

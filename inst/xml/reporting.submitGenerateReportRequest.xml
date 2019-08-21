@@ -1,4 +1,4 @@
-<SubmitGenerateReportRequest xmlns="https://bingads.microsoft.com/Reporting/v12">
+<SubmitGenerateReportRequest xmlns="https://bingads.microsoft.com/Reporting/v13">
       <ReportRequest i:nil="false" i:type="%sRequest">
         <ExcludeColumnHeaders i:nil="false">false</ExcludeColumnHeaders>
         <ExcludeReportFooter i:nil="false">true</ExcludeReportFooter>
@@ -23,7 +23,7 @@
           <CustomDateRangeStart i:nil="false">
             <Day>%s</Day>
             <Month>%s</Month>
-            <Year>%s</Year>          
+            <Year>%s</Year>
           </CustomDateRangeStart>
         </Time>
         </ReportRequest>

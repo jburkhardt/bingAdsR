@@ -1,6 +1,5 @@
 rm(list=ls())
-path <- paste0(.libPaths()[1],"/bingAdsR/data/")
-
+path <- paste0(system.file(package = "bingAdsR"), "/xml/")
 
 ###Dummy Variables###
 reportId = ""
@@ -95,7 +94,7 @@ getReportId <- function(credentials, report, columns, startDate, endDate){
     tmp$day <- as.integer(format(x, "%d"))
     return(tmp)
   }
-  
+
   getColumnsXML <- function(report, columms){
     columnsXML <- ""
     for(column in columns){
@@ -103,10 +102,10 @@ getReportId <- function(credentials, report, columns, startDate, endDate){
     }
     return(columnsXML)
   }
-  
+
   startDate <- dateSplitter(startDate)
   endDate <- dateSplitter(endDate)
-  url <- "https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v12/ReportingService.svc"
+  url <- "https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v13/ReportingService.svc"
   SOAPAction <- "SubmitGenerateReport"
   header <- paste(readLines(paste0(path,"reporting.header.xml")), collapse = "")
   bodyXML <- paste(readLines(paste0(path,"reporting.SubmitGenerateReportRequest.xml")), collapse = "")
@@ -125,11 +124,11 @@ getReportId <- function(credentials, report, columns, startDate, endDate){
 
 #Download the file and read it
 getDownloadUrl <- function(credentials, reportId){
-  url <- "https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v12/ReportingService.svc"
+  url <- "https://reporting.api.bingads.microsoft.com/Api/Advertiser/Reporting/v13/ReportingService.svc"
   SOAPAction <- "PollGenerateReport"
   report <- "PollGenerateReportRequest"
   header <- paste(readLines(paste0(path,"reporting.header.xml")), collapse = "")
-  bodyXML <- '<PollGenerateReportRequest xmlns="https://bingads.microsoft.com/Reporting/v12"><ReportRequestId i:nil="false">%s</ReportRequestId></PollGenerateReportRequest>'
+  bodyXML <- '<PollGenerateReportRequest xmlns="https://bingads.microsoft.com/Reporting/v13"><ReportRequestId i:nil="false">%s</ReportRequestId></PollGenerateReportRequest>'
   bodyXML <- sprintf(bodyXML, reportId)
   body <- sprintf(header, SOAPAction,
                   credentials$client_id, credentials$access_token, credentials$customer_id, credentials$account_id, credentials$developer_token, credentials$password, credentials$username,
@@ -152,8 +151,3 @@ getDataFromURL <- function(downloadUrl){
   file.remove(files$Name[1])
   return(df)
 }
-
-
-
-
-
